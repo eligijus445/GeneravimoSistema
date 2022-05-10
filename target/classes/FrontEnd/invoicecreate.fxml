@@ -1,0 +1,90 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ChoiceBox?>
+<?import javafx.scene.control.DatePicker?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<Pane minHeight="-Infinity" minWidth="-Infinity" prefHeight="785.0" prefWidth="1183.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FrontEnd.InvoiceCreateController">
+   <children>
+      <SplitPane dividerPositions="0.09781931464174454" prefHeight="792.0" prefWidth="1183.0">
+         <items>
+            <AnchorPane prefHeight="674.0" prefWidth="122.0">
+               <children>
+                  <VBox prefHeight="514.0" prefWidth="122.0">
+                     <children>
+                        <Button mnemonicParsing="false" onAction="#goToCreateWorkAct" prefHeight="26.0" prefWidth="129.0" text="Kuri darbų aktą" />
+                        <Button fx:id="createinvoicebutton" mnemonicParsing="false" prefHeight="26.0" prefWidth="126.0" text="Kurti sąskaitą faktūrą" />
+                        <Button mnemonicParsing="false" onAction="#goToWorkActs" prefHeight="26.0" prefWidth="130.0" text="Darbų  aktai" />
+                        <Button mnemonicParsing="false" onAction="#goToInvoices" prefHeight="26.0" prefWidth="130.0" text="Sąskaitos faktūros" />
+                        <Button fx:id="buttonSettings" mnemonicParsing="false" onAction="#goToSettings" prefHeight="26.0" prefWidth="150.0" text="Nustatymai" />
+                     </children>
+                  </VBox>
+               </children>
+            </AnchorPane>
+            <AnchorPane fx:id="createWorkact" prefHeight="756.0" prefWidth="1155.0">
+               <children>
+                  <Text layoutX="406.0" layoutY="36.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sąskaitos faktūros generavimas">
+                     <font>
+                        <Font size="20.0" />
+                     </font>
+                  </Text>
+                  <TableView fx:id="workActTableView" layoutX="7.0" layoutY="132.0" onMouseClicked="#openWorkAct" prefHeight="298.0" prefWidth="1043.0">
+                    <columns>
+                      <TableColumn fx:id="workActID" prefWidth="75.0" text="ID" />
+                      <TableColumn fx:id="workActNumber" prefWidth="105.59992218017578" text="Akto numeris" />
+                        <TableColumn fx:id="firmName" prefWidth="141.5999755859375" text="Įmonės pavadinimas" />
+                        <TableColumn fx:id="adress" prefWidth="141.5999755859375" text="Adresas" />
+                        <TableColumn fx:id="generateDate" prefWidth="141.5999755859375" text="Generavimo data" />
+                        <TableColumn fx:id="user" prefWidth="141.5999755859375" text="Darbuotojas" />
+                        <TableColumn fx:id="description" prefWidth="311.20000000000005" text="Aprašymas" />
+                    </columns>
+                  </TableView>
+                  <TextField fx:id="searchTextField" layoutX="7.0" layoutY="95.0" promptText="Paieška" />
+                  <Button layoutX="174.0" layoutY="95.0" mnemonicParsing="false" onAction="#searchWorkAct" text="Ieškoti" />
+                  <Text layoutX="431.0" layoutY="127.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sugeneruoti darbų aktai" wrappingWidth="205.33676147460938">
+                     <font>
+                        <Font size="17.0" />
+                     </font>
+                  </Text>
+                  <Button layoutX="14.0" layoutY="536.0" mnemonicParsing="false" onAction="#generateInvoice" prefHeight="43.0" prefWidth="190.0" text="Generuoti sąskaitą faktūrą" />
+                  <Button layoutX="225.0" layoutY="536.0" mnemonicParsing="false" onAction="#goToEditWorkAct" prefHeight="43.0" prefWidth="190.0" text="Redaguoti darbų aktą" />
+                  <Button layoutX="434.0" layoutY="536.0" mnemonicParsing="false" onAction="#goToMain" prefHeight="43.0" prefWidth="190.0" text="Grįžti " />
+                  <TextField fx:id="discountTextField" layoutX="652.0" layoutY="462.0" onKeyTyped="#refreshPrices" prefHeight="25.0" prefWidth="48.0" promptText="Nuolauda %" text="0" />
+                  <TextField fx:id="priceWhitoutTaxTextField" editable="false" layoutX="14.0" layoutY="462.0" promptText="Kaina be PVM" />
+                  <TextField fx:id="taxPriceTexField" editable="false" layoutX="181.0" layoutY="462.0" promptText="PVM suma" />
+                  <TextField fx:id="priceWhitTAXTextFlield" editable="false" layoutX="336.0" layoutY="462.0" prefHeight="25.0" prefWidth="307.0" promptText="Suma" />
+                  <Text fx:id="errorText" fill="RED" layoutX="12.0" layoutY="715.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="1034.13671875" />
+                  <Text layoutX="21.0" layoutY="454.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Kaina be PVM" />
+                  <Text layoutX="181.0" layoutY="454.0" strokeType="OUTSIDE" strokeWidth="0.0" text="PVM suma" />
+                  <Text layoutX="348.0" layoutY="454.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Suma" />
+                  <CheckBox fx:id="discuontCheckBox" layoutX="854.0" layoutY="466.0" mnemonicParsing="false" onMouseClicked="#selectedChoiceBox" selected="true" text="Taikyti nuolaidą kainai be  PVM" />
+                  <CheckBox fx:id="clientEMailCheckBox" layoutX="15.0" layoutY="505.0" mnemonicParsing="false" onAction="#showClientEmailTextField" text="Siųsti sąskaitą faktūrą el. paštu" />
+                  <TextField fx:id="clientEMailTextField" disable="true" layoutX="225.0" layoutY="501.0" prefHeight="25.0" prefWidth="190.0" promptText="Gavėjo el. pašto adresas" />
+                  <Button layoutX="373.0" layoutY="58.0" mnemonicParsing="false" onAction="#filterInvoices" text="Filtruoti pagal datą" />
+                  <DatePicker fx:id="startDate" layoutX="8.0" layoutY="58.0" />
+                  <DatePicker fx:id="endDate" layoutX="189.0" layoutY="58.0" />
+                  <Text layoutX="8.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pradžios data: " />
+                  <Text layoutX="189.0" layoutY="53.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pabaigos data:" />
+                  <Button fx:id="yesButton" layoutX="32.0" layoutY="667.0" mnemonicParsing="false" onAction="#generateInvoiceWhitoutVatNumber" text="Taip" />
+                  <Button fx:id="noButton" layoutX="91.0" layoutY="667.0" mnemonicParsing="false" onAction="#openWorkActEditor" text="Redaguoti darbų aktą" />
+                  <Text fx:id="invoiceGenerationErrorText" fill="RED" layoutX="22.0" layoutY="598.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nėra įrašytas PVM mokėtojo kodas. Art tikrai norite generuoti sąskaitą faktūrą be PVM mokėtojo kodo?" textAlignment="CENTER" wrappingWidth="174.0" />
+                  <Text layoutX="652.0" layoutY="454.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nuolaida" />
+                  <ChoiceBox fx:id="vatChoiceBox" layoutX="714.0" layoutY="462.0" prefHeight="25.0" prefWidth="116.0" />
+                  <Text layoutX="714.0" layoutY="454.0" strokeType="OUTSIDE" strokeWidth="0.0" text=" PVM tarifas" />
+                  <Button layoutX="749.0" layoutY="493.0" mnemonicParsing="false" onAction="#selectedVat" text="Taikyti tarifą" />
+               </children>
+            </AnchorPane>
+         </items>
+      </SplitPane>
+   </children>
+</Pane>

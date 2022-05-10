@@ -1,0 +1,273 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.Button?>
+<?import javafx.scene.control.CheckBox?>
+<?import javafx.scene.control.ComboBox?>
+<?import javafx.scene.control.PasswordField?>
+<?import javafx.scene.control.SplitPane?>
+<?import javafx.scene.control.TableColumn?>
+<?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.text.Font?>
+<?import javafx.scene.text.Text?>
+
+<Pane minHeight="-Infinity" minWidth="-Infinity" prefHeight="785.0" prefWidth="1183.0" xmlns="http://javafx.com/javafx/18" xmlns:fx="http://javafx.com/fxml/1" fx:controller="FrontEnd.SettingsController">
+    <children>
+        <SplitPane prefHeight="792.0" prefWidth="1183.0">
+            <items>
+                <AnchorPane prefHeight="674.0" prefWidth="122.0">
+                    <children>
+                        <VBox prefHeight="792.0" prefWidth="122.0">
+                            <children>
+                                <Button mnemonicParsing="false" onAction="#goToCreateWorkAct" prefHeight="26.0" prefWidth="129.0" text="Kuri darbų aktą" />
+                                <Button fx:id="createinvoicebutton" mnemonicParsing="false" onAction="#goToCreateInvoice" prefHeight="26.0" prefWidth="126.0" text="Kurti sąskaitą faktūrą" />
+                                <Button fx:id="workactsbutton" mnemonicParsing="false" onAction="#goToWorkActs" prefHeight="26.0" prefWidth="130.0" text="Darbų  aktai" />
+                                <Button fx:id="goToInvoicesButton" mnemonicParsing="false" onAction="#goToInvoices" prefHeight="26.0" prefWidth="130.0" text="Sąskaitos faktūros" />
+                                <Button fx:id="buttonSettings" mnemonicParsing="false" prefHeight="26.0" prefWidth="150.0" text="Nustatymai" />
+                            </children>
+                        </VBox>
+                  <SplitPane dividerPositions="0.07468354430379746" layoutX="121.0" orientation="VERTICAL" prefHeight="792.0" prefWidth="1060.0">
+                    <items>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="123.0" prefWidth="1057.0">
+                           <children>
+                              <Button layoutX="186.0" layoutY="5.0" mnemonicParsing="false" onAction="#goToUserSettings" prefHeight="46.0" prefWidth="128.0" text="Vartotojų nustatymai" />
+                              <Button fx:id="goToCompanySettings" layoutX="322.0" layoutY="5.0" mnemonicParsing="false" onAction="#goToCompanySettings" prefHeight="46.0" prefWidth="128.0" text="Sistemos nustatymai" />
+                              <Button layoutX="459.0" layoutY="5.0" mnemonicParsing="false" onAction="#goToMaterialsSettings" prefHeight="46.0" prefWidth="146.0" text="Medžiagų nustatymai" />
+                              <Button fx:id="goToClientSettings" layoutX="613.0" layoutY="5.0" mnemonicParsing="false" onAction="#goToClientSettings" prefHeight="46.0" prefWidth="146.0" text="Klientų nustatymai" />
+                              <Button fx:id="goToPasswordResetButton" layoutX="31.0" layoutY="6.0" mnemonicParsing="false" onAction="#goToPasswordReset" prefHeight="46.0" prefWidth="146.0" text="Slaptažodžio keitimas" />
+                           </children>
+                        </AnchorPane>
+                      <AnchorPane minHeight="0.0" minWidth="0.0" prefHeight="703.0" prefWidth="1057.0">
+                           <children>
+                              <Pane fx:id="usersSettingsPane" layoutX="-1.0" layoutY="-6.0" prefHeight="744.0" prefWidth="1059.0" visible="false">
+                                 <children>
+                                    <Text layoutX="356.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vartotojų nustatymai" wrappingWidth="311.44921875">
+                                       <font>
+                                          <Font size="30.0" />
+                                       </font>
+                                    </Text>
+                                    <TableView fx:id="tableView" layoutX="75.0" layoutY="48.0" onMouseClicked="#fillUserSelectedUserDetails" onSort="#fillUsersTable" prefHeight="266.0" prefWidth="827.0">
+                                       <columns>
+                                          <TableColumn fx:id="id" prefWidth="75.0" text="Id" />
+                                          <TableColumn fx:id="name" prefWidth="122.0" text="Vardas" />
+                                          <TableColumn fx:id="surname" prefWidth="124.0" text="Pavardė" />
+                                          <TableColumn fx:id="email" prefWidth="127.0" text="El. paštas" />
+                                          <TableColumn fx:id="phone" prefWidth="129.0" text="Telefono nr." />
+                                          <TableColumn fx:id="active" prefWidth="100.0" text="Aktyvus" />
+                                          <TableColumn fx:id="role" prefWidth="147.0" text="Rolė" />
+                                       </columns>
+                                    </TableView>
+                                    <TextField fx:id="searchUserTextField" layoutX="74.0" layoutY="13.0" promptText="Paieškos tekstas" />
+                                    <Button fx:id="shearch" layoutX="241.0" layoutY="13.0" mnemonicParsing="false" onAction="#shearchUser" prefHeight="25.0" prefWidth="82.0" text="Ieškoti" />
+                                    <TextField fx:id="updateFieldName" layoutX="74.0" layoutY="349.0" promptText="Vardas" />
+                                    <TextField fx:id="updateFieldSurname" layoutX="74.0" layoutY="383.0" promptText="Pavardė" />
+                                    <TextField fx:id="updateFieldEmail" layoutX="74.0" layoutY="417.0" promptText="El. paštas" />
+                                    <TextField fx:id="updateFieldPhone" layoutX="74.0" layoutY="450.0" promptText="Telefono nr." />
+                                    <CheckBox fx:id="checkBoxActive" layoutX="80.0" layoutY="527.0" mnemonicParsing="false" prefHeight="18.0" prefWidth="141.0" text="Aktyvus" />
+                                    <Button fx:id="updateUserButton" layoutX="78.0" layoutY="558.0" mnemonicParsing="false" onAction="#updateUserInfo" prefHeight="26.0" prefWidth="142.0" text="Išsaugoti" />
+                                    <ComboBox fx:id="updateComboBox" layoutX="76.0" layoutY="486.0" prefWidth="150.0" promptText="Grupė" />
+                                    <TextField fx:id="createTextFieldUsername" layoutX="362.0" layoutY="351.0" promptText="Slapyvardis" />
+                                    <TextField fx:id="createTextFieldName" layoutX="362.0" layoutY="386.0" promptText="Vardas" />
+                                    <TextField fx:id="createTextFieldEmail" layoutX="363.0" layoutY="454.0" promptText="El. Paštas" />
+                                    <TextField fx:id="createTextfieldPhone" layoutX="363.0" layoutY="487.0" promptText="Telefono nr." />
+                                    <ComboBox fx:id="createComboBoxRole" layoutX="362.0" layoutY="523.0" prefWidth="150.0" promptText="Grupė" />
+                                    <Button layoutX="361.0" layoutY="558.0" mnemonicParsing="false" onAction="#createNewUser" prefHeight="26.0" prefWidth="150.0" text="Kurti naują vartotoją" />
+                                    <Text layoutX="74.0" layoutY="340.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vartotojo redagavimas" />
+                                    <Text layoutX="361.0" layoutY="340.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Naujo vartotojo kūrimas" />
+                                    <TextField fx:id="createTextFieldSurname" layoutX="362.0" layoutY="417.0" promptText="Pavardė" />
+                                    <Text fx:id="deleteUserText" fill="RED" layoutX="657.0" layoutY="367.0" strokeType="OUTSIDE" strokeWidth="0.0" />
+                                    <Text fx:id="userSettingsErrorText" fill="RED" layoutX="12.0" layoutY="712.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="1035.13671875">
+                                       <font>
+                                          <Font size="13.0" />
+                                       </font>
+                                    </Text>
+                                    <TextField fx:id="useridTextField" layoutX="75.0" layoutY="601.0" visible="false" />
+                                    <Button fx:id="askResetButton" layoutX="78.0" layoutY="589.0" mnemonicParsing="false" onAction="#askForResetPassword" prefHeight="25.0" prefWidth="141.0" text="Atsatyti slaptažodį" />
+                                    <Text fx:id="resetPasswordText" fill="RED" layoutX="12.0" layoutY="637.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ar tokrai norite šiam vartotojui atstatyti slaptažodį?">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Text>
+                                    <Button fx:id="resetPasswordButton" layoutX="14.0" layoutY="660.0" mnemonicParsing="false" onAction="#resetPassword" prefHeight="25.0" prefWidth="142.0" text="Taip" />
+                                    <Button fx:id="cancelPasswordResetButton" layoutX="174.0" layoutY="660.0" mnemonicParsing="false" onAction="#cancelPasswordReset" prefHeight="25.0" prefWidth="141.0" text="Ne" />
+                                 </children>
+                              </Pane>
+                              <Pane fx:id="firmSettingsPane" layoutX="5.0" layoutY="-6.0" prefHeight="744.0" prefWidth="1059.0" visible="false">
+                                 <children>
+                                    <Text layoutX="49.0" layoutY="155.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Darbų aktų serija:" />
+                                    <Text layoutX="49.0" layoutY="187.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Darbų aktų saugojimo vieta:" />
+                                    <Text layoutX="49.0" layoutY="221.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sąskaitų faktūrų sertija:" />
+                                    <Text layoutX="49.0" layoutY="250.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sąskaitų saugojimo vieta:" />
+                                    <Text layoutX="49.0" layoutY="282.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Banko pavadinimas:" />
+                                    <Text layoutX="49.0" layoutY="316.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Banko sąskaitos numeris:" />
+                                    <Text layoutX="49.0" layoutY="345.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Informacijos siuntimo el. paštas:" />
+                                    <TextField fx:id="companyWorkActSeriesTextField" layoutX="228.0" layoutY="138.0" />
+                                    <TextField fx:id="companyInvoiceSieriesTextField" layoutX="228.0" layoutY="204.0" />
+                                    <TextField fx:id="companySieriesPathTextField" layoutX="228.0" layoutY="233.0" onMouseClicked="#chooseCompanyInvoiceSavingPath" />
+                                    <TextField fx:id="companyIBanTextField" layoutX="228.0" layoutY="299.0" />
+                                    <TextField fx:id="companyEmailTextField" layoutX="228.0" layoutY="328.0" />
+                                    <Text layoutX="405.0" layoutY="49.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Sistemos nustatymai:">
+                                       <font>
+                                          <Font size="30.0" />
+                                       </font>
+                                    </Text>
+                                    <Button layoutX="399.0" layoutY="328.0" mnemonicParsing="false" onAction="#showCompanychangeEmailPassword" text="Pakeisti el. pašto slaptažodį" />
+                                    <Text fx:id="companyPasswordText" layoutX="585.0" layoutY="345.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Slaptažodis:" />
+                                    <Text fx:id="companyrePasswordText" layoutX="585.0" layoutY="377.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pakartokite slaptažodį:" />
+                                    <PasswordField fx:id="companyPasswordTextField" layoutX="712.0" layoutY="328.0" />
+                                    <PasswordField fx:id="companyRepaswordTextField" layoutX="712.0" layoutY="360.0" />
+                                    <Button layoutX="49.0" layoutY="373.0" mnemonicParsing="false" onAction="#saveCompanySettings" prefHeight="25.0" prefWidth="92.0" text="Išsaugoti" />
+                                    <Text fx:id="companyErrorText" fill="RED" layoutX="49.0" layoutY="429.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="626.13671875">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </Text>
+                                    <TextField fx:id="companyBankNameTextField" layoutX="228.0" layoutY="265.0" />
+                                    <TextField fx:id="companyWorkActSavePathTextField" layoutX="228.0" layoutY="170.0" />
+                                 </children>
+                              </Pane>
+                              <Pane fx:id="materialsSettingsPane" layoutX="1.0" prefHeight="728.0" prefWidth="1059.0" visible="false">
+                                 <children>
+                                    <TableView fx:id="materialTableView" layoutY="64.373046875" onMouseClicked="#fillMaterialUpdateDetails" prefHeight="412.0" prefWidth="590.0">
+                                       <columns>
+                                          <TableColumn fx:id="materialid" prefWidth="37.600006103515625" text="ID" />
+                                          <TableColumn fx:id="materialName" prefWidth="340.0" text="Pavadinimas" />
+                                          <TableColumn fx:id="materialUnits" prefWidth="100.0" text="Vinetai" />
+                                          <TableColumn fx:id="materialPrice" prefWidth="113.0" text="Kaina" />
+                                       </columns>
+                                    </TableView>
+                                    <Text layoutX="387.0" layoutY="32.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Medžiagų nustatymai">
+                                       <font>
+                                          <Font size="30.0" />
+                                       </font>
+                                    </Text>
+                                    <TextField fx:id="materialSearchTextField" layoutY="32.373046875" prefHeight="25.0" prefWidth="175.0" promptText="Medžiagos pavadinimas" />
+                                    <Button fx:id="materialSearchButton" layoutX="212.0" layoutY="32.373046875" mnemonicParsing="false" onAction="#findMaterial" prefHeight="25.0" prefWidth="96.0" text="Ieškoti" />
+                                    <Text layoutX="611.0" layoutY="102.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pavadinimas:" />
+                                    <Text layoutX="611.0" layoutY="135.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Matavimo vienetai:" />
+                                    <Text layoutX="611.0" layoutY="168.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vieneto kaina:" />
+                                    <TextField fx:id="materialNameTextField" layoutX="723.0" layoutY="85.373046875" />
+                                    <TextField fx:id="materialPriceTextField" layoutX="723.0" layoutY="151.373046875" />
+                                    <Text layoutX="671.0" layoutY="63.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Naujos medžiagos pridėjimas į sąrašą">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </Text>
+                                    <Button layoutX="723.0" layoutY="188.373046875" mnemonicParsing="false" onAction="#addMaterial" prefHeight="25.0" prefWidth="149.0" text="Pridėti" />
+                                    <Text layoutX="611.0" layoutY="365.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pavadinimas:" />
+                                    <Text layoutX="611.0" layoutY="398.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Matavimo vienetai:" />
+                                    <Text layoutX="611.0" layoutY="431.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vieneto kaina:" />
+                                    <TextField fx:id="materialUpdateNameTextField" layoutX="723.0" layoutY="348.0" />
+                                    <TextField fx:id="materialUpdatePriceTextField" layoutX="723.0" layoutY="414.0" />
+                                    <Text layoutX="717.0" layoutY="324.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Medžiagos atnaujinimas">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </Text>
+                                    <Button layoutX="723.0" layoutY="451.0" mnemonicParsing="false" onAction="#updateMaterial" prefHeight="25.0" prefWidth="149.0" text="Atnaujinti" />
+                                    <ComboBox fx:id="updateMaterialUnitsComboBox" layoutX="723.0" layoutY="381.0" prefWidth="150.0" />
+                                    <ComboBox fx:id="materialUnitsComboBox" layoutX="723.0" layoutY="118.373046875" prefWidth="150.0" />
+                                    <Button layoutX="408.0" layoutY="489.0" mnemonicParsing="false" onAction="#askFormMaterialDelete" text="Pašalinti pasirinktą medžiagą" />
+                                    <Text fx:id="deleteMaterialTextField" fill="RED" layoutX="325.0" layoutY="552.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ar tikrai norite pašalinti šią medžiagą?" visible="false">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Text>
+                                    <Button fx:id="deleteMaterialButton" layoutX="379.0" layoutY="590.0" mnemonicParsing="false" onAction="#deleteMAterial" prefHeight="40.0" prefWidth="96.0" text="Taip" visible="false" />
+                                    <Button fx:id="cancelMaterialButton" layoutX="515.0" layoutY="590.0" mnemonicParsing="false" onAction="#cancelMaterialDelete" prefHeight="40.0" prefWidth="96.0" text="Ne" visible="false" />
+                                    <Text fx:id="materialErrorText" fill="RED" layoutX="14.0" layoutY="681.0" strokeType="OUTSIDE" strokeWidth="0.0">
+                                       <font>
+                                          <Font size="15.0" />
+                                       </font>
+                                    </Text>
+                                    <TextField fx:id="materialIdTextField" layoutX="720.0" layoutY="245.0" visible="false" />
+                                 </children>
+                              </Pane>
+                              <Pane fx:id="clientsSettingsPane" layoutX="1.0" prefHeight="728.0" prefWidth="1060.0">
+                                 <children>
+                                    <TextField fx:id="firmName" editable="false" layoutX="604.0" layoutY="326.0" prefHeight="26.0" prefWidth="410.0" />
+                                    <Text layoutX="548.0" layoutY="343.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Įmonė: " />
+                                    <TextField fx:id="clientNameTextField" layoutX="643.0" layoutY="365.0" promptText="Vardas" />
+                                    <TextField fx:id="clientEmailTextField" layoutX="643.0" layoutY="431.0" promptText="El. paštas" />
+                                    <TextField fx:id="clientSurnameTextField" layoutX="643.0" layoutY="397.0" promptText="Pavardė" />
+                                    <TextField fx:id="clientPhoneTextField" layoutX="643.0" layoutY="467.0" promptText="Telefono nr." />
+                                    <Text layoutX="549.0" layoutY="382.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Vardas:" />
+                                    <Text layoutX="553.0" layoutY="448.0" strokeType="OUTSIDE" strokeWidth="0.0" text="El. Paštas:" />
+                                    <Text layoutX="553.0" layoutY="484.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Telefono nr.:" />
+                                    <TableView fx:id="clientTableView" layoutX="22.0" layoutY="316.0" onMouseClicked="#fillClientDetails" prefHeight="213.0" prefWidth="489.0">
+                                       <columns>
+                                          <TableColumn fx:id="clientName" prefWidth="96.0" text="Vardas" />
+                                          <TableColumn fx:id="clientSurname" prefWidth="107.0" text="Pavardė" />
+                                          <TableColumn fx:id="clientEmail" prefWidth="142.0" text="El. paštas" />
+                                          <TableColumn fx:id="clientPhone" prefWidth="143.0" text="Telefono nr." />
+                                       </columns>
+                                    </TableView>
+                                    <Text layoutX="553.0" layoutY="412.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pavardė:" />
+                                    <Button layoutX="643.0" layoutY="503.0" mnemonicParsing="false" onAction="#updateClient" text="Išsaugoti" />
+                                    <Button layoutX="730.0" layoutY="503.0" mnemonicParsing="false" onAction="#askDeleteClient" text="Pašalinti klientą iš sąrašo" />
+                                    <TableView fx:id="firmsTableView" layoutX="14.0" layoutY="96.0" onMouseClicked="#fillClientTable" prefHeight="166.0" prefWidth="1012.0">
+                                       <columns>
+                                          <TableColumn fx:id="firmID" prefWidth="47.200035095214844" text="ID" />
+                                          <TableColumn fx:id="firmNumber" prefWidth="113.5999755859375" text="Įmonės kodas" />
+                                          <TableColumn fx:id="firmNameCol" prefWidth="352.0" text="Pavadinimas" />
+                                          <TableColumn fx:id="firmAdress" minWidth="0.0" prefWidth="346.39996337890625" text="Adresas" />
+                                          <TableColumn fx:id="formName" prefWidth="148.0" text="Formos pavadinimas" />
+                                       </columns>
+                                    </TableView>
+                                    <Text fx:id="clientErrorText" fill="RED" layoutX="12.0" layoutY="675.0" strokeType="OUTSIDE" strokeWidth="0.0" wrappingWidth="1035.13671875">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Text>
+                                    <Button layoutX="378.0" layoutY="536.0" mnemonicParsing="false" onAction="#goToAddClient" text="Pridėti naują klientą" />
+                                    <Text fx:id="clientDeleteTextField" fill="RED" layoutX="677.0" layoutY="570.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Ar tikrai norite naikinti šį klientą?">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Text>
+                                    <Button fx:id="cancelClientDeleteButton" layoutX="867.0" layoutY="592.0" mnemonicParsing="false" onAction="#cancelClientDelete" prefHeight="40.0" prefWidth="105.0" text="Ne" />
+                                    <Button fx:id="deleteClientButton" layoutX="665.0" layoutY="592.0" mnemonicParsing="false" onAction="#deleteClient" prefHeight="40.0" prefWidth="105.0" text="Taip" />
+                                    <Text layoutX="388.0" layoutY="46.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Klientų nustatymai">
+                                       <font>
+                                          <Font size="30.0" />
+                                       </font>
+                                    </Text>
+                                    <TextField fx:id="searchFirmNameTextField" layoutX="14.0" layoutY="65.0" promptText="Paieškos tekstas" />
+                                    <Button fx:id="shearchFirmButton" layoutX="185.0" layoutY="65.0" mnemonicParsing="false" onAction="#findFirm" prefHeight="25.0" prefWidth="75.0" text="Ieškoti" />
+                                    <TextField fx:id="firmIdTextField" disable="true" layoutX="600.0" layoutY="275.0" visible="false" />
+                                 </children>
+                              </Pane>
+                              <Pane fx:id="resetPasswordPane" prefHeight="744.0" prefWidth="1059.0" visible="false">
+                                 <children>
+                                    <Text layoutX="361.0" layoutY="37.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Slaptažodžio keitimas" wrappingWidth="398.44921875">
+                                       <font>
+                                          <Font size="30.0" />
+                                       </font>
+                                    </Text>
+                                    <Text layoutX="355.0" layoutY="167.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Senas slaptažodis:" />
+                                    <Text layoutX="352.0" layoutY="207.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Naujas slaptažodis:" />
+                                    <Text layoutX="355.0" layoutY="246.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Pakartokite slaptažodį:" />
+                                    <PasswordField fx:id="loggedinOldPassword" layoutX="486.0" layoutY="150.0" />
+                                    <PasswordField fx:id="loggedinNewPassword" layoutX="486.0" layoutY="190.0" />
+                                    <PasswordField fx:id="loggedinNewPasswordRE" layoutX="486.0" layoutY="229.0" />
+                                    <Button layoutX="486.0" layoutY="265.0" mnemonicParsing="false" onAction="#loggedinPasswordreset" prefHeight="25.0" prefWidth="149.0" text="Išsaugoti" />
+                                    <Text fx:id="loggedInErrorText" fill="RED" layoutX="75.0" layoutY="375.0" strokeType="OUTSIDE" strokeWidth="0.0">
+                                       <font>
+                                          <Font size="20.0" />
+                                       </font>
+                                    </Text>
+                                 </children>
+                              </Pane>
+                           </children>
+                        </AnchorPane>
+                    </items>
+                  </SplitPane>
+                    </children>
+                </AnchorPane>
+            </items>
+        </SplitPane>
+    </children>
+</Pane>
