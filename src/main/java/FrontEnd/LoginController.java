@@ -41,8 +41,6 @@ public class LoginController {
     public void onLoginButtonClick(javafx.event.ActionEvent event) throws SQLException, IOException {
         Gener gener = new Gener();
         Login feMain = new Login();
-        loginField.setText("Eligiminijus");
-        passwordField.setText("MkoiUUt5RS1G");
 
         if (gener.login(loginField.getText(), passwordField.getText())) {
             wrongLogin.setFill(Paint.valueOf("green"));
